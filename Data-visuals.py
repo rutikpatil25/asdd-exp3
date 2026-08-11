@@ -4,6 +4,8 @@ import seaborn as sns  # Standard alias for Seaborn is 'sns', though 'sb' works
 import sklearn # 'skilit' appears to be a typo for 'scikit-learn' or 'sklearn'
 import matplotlib.pyplot as plt
 
+#By Tanmay
+print("This is the data")
 df = pd.read_csv('tested.csv')
 
 print(df.head())
