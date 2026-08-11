@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 
 #By Tanmay
 print("This is the data")
+# By Manas
+print("Yes we know, these is data")
 df = pd.read_csv('tested.csv')
 
 print(df.head())
