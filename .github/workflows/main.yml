@@ -1,0 +1,37 @@
+name: Python Data Pipeline CI
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Download code from GitHub
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Python environment
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip' # Speeds up future runs by caching libraries
+
+      # Step 3: Upgrade pip and install required data science libraries
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas numpy scikit-learn seaborn matplotlib
+
+      # Step 4: Run the data processing script
+      # MPLBACKEND=Agg prevents matplotlib from crashing on a server without a screen
+      - name: Execute Python Script
+        env:
+          MPLBACKEND: Agg
+        run: |
+          python Data-visuals.py 
